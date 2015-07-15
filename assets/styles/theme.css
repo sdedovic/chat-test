@@ -1,0 +1,112 @@
+html{
+	height: 100%;
+}
+body{
+	position: relative;
+	height: 100%;
+}
+
+
+.message-form{
+	position: relative;
+}
+.message-name{
+	width:10em;
+}
+.message-content{
+	width: 100%;
+	display: table-cell;
+}
+.message-btn{
+	display: table-cell;
+}
+.table{
+	display: table;
+}
+
+
+.chat-container{
+	margin-bottom: 15px;
+}
+.fix-bottom{
+	position: fixed;
+	bottom: 0;
+	width: inherit;
+}
+.chat-list{
+	position: absolute;
+	bottom:119px;
+}
+.fixed-panel{
+	height: 80%;
+	overflow-y: scroll;
+}
+.sdr{
+	color: #404040;
+	font-size: 14px;
+}
+.time{
+	color: #344D6A
+}
+.msg{
+	font-size: 18px;
+	color: #2C2C2C;
+}
+
+
+.container-full{
+	padding: 0;
+	margin: 0 auto;
+    width: 100%;
+}
+.height-full{
+		height: 100%;
+}
+.no-margin{
+	margin: 0;
+}
+.absolute{
+	position: absolute;
+}
+.vscroll{
+	overflow-y: scroll;
+}
+
+
+nav#navbar{
+	position: absolute;
+	top: 0;
+	height: 75px;
+	width: 100%;
+}
+section#chat-list{
+		position: absolute;
+		top: 75px;
+		bottom: 127px;
+		width: 100%;
+}
+section#message-box{
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+}
+
+.bg-one{
+	border: 0;
+	border-radius: 0;
+	background-color: white;
+}
+.bg-two{
+	/*border: 0;*/
+	border-radius: 0;
+	background-color: white;
+}
+.bg-nav{
+	border: 0;
+	border-radius: 0;
+	background-color: #E88142;
+}
+
+.title{
+	color: white;
+}

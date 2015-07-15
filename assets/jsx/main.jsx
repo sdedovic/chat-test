@@ -31,61 +31,69 @@ var MessageBox = React.createClass({
   },
   render: function() {
     return (
-      <div className="well clearfix">
-        <form onSubmit={this.sendMessage}>
-          <div className="form-group">
-            <label htmlFor="username">Name</label>
-            <input type="text" className="form-control" id="username" placeholder="Name"
+      <div className="well clearfix no-margin bg-two">
+        <form autocomplete="off" onSubmit={this.sendMessage}>
+            <input type="text" className="form-control message-name" id="username" placeholder="Name" maxLength="15"
               onChange={this.handleNameChange}/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="message">Message</label>
-            <textarea className="form-control" name="message" rows="3" placeholder="Message"
-              value={this.state.text} onChange={this.handleTextChange} onKeyPress={this.handleTextKeyPress}></textarea>
-          </div>
-          <span>{this.charsRemaining()}</span>
-          <button type="submit" className="btn btn-primary pull-right"
-            disabled={this.isDisabled()}>Send</button>
+            <br/>
+            <div className="table no-margin">
+                <span className="message-content"><input type="text" className="form-control " name="message" placeholder="Message" 
+                    value={this.state.text} onChange={this.handleTextChange} onKeyPress={this.handleTextKeyPress}/></span>
+                <button type="submit" className="btn btn-primary message-btn" 
+                    disabled={this.isDisabled()}>Send</button>
+           </div>
         </form>
       </div>
     );
   }
 });
 
+var dateOptions = {
+    weekday: "long", year: "numeric", month: "short",
+    day: "numeric", hour: "2-digit", minute: "2-digit"
+}; 
+
 var ChatBox = React.createClass({
   getInitialState: function() {
     return {
-      content: [{sdr:'Server', msg:'Welcome to Chat!'}]
+      content: []
     };
   },
   componentDidMount: function(){
     var context = this;
     var socket = io.socket;
-    socket.on('message', function(message){
+    socket.on('message', function(data){
+      var message = data;
+      message['time']=moment();
       context.setState({
-        content: context.state.content.concat([message])
+        content: [message].concat(context.state.content)
       })
     })
   },
   render: function(){
     return(
-      <ul>
+      <div className="well clearfix no-margin height-full vscroll bg-one">
         {
           this.state.content.map(function(item){
-            return <li>{item.sdr}: {item.msg}</li>
+            return (
+              <blockquote className="chat-container">
+                <p className="msg">{item.msg}</p>
+                <footer className="sdr">{item.sdr}<cite className="time pull-right">{moment(item.time).fromNow()}</cite></footer>
+              </blockquote>
+            )
           })
         }
-      </ul>
+      </div>
     );
   }
 });
 
 React.render(
   <MessageBox />,
-  document.getElementById('message-box')
+  document.getElementById('react-message-box')
 );
 
 React.render(
   <ChatBox />,
-  document.getElementById('chat-list')
+  document.getElementById('react-chat-list')
 );

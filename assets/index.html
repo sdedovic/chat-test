@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>New Sails App</title>
 
+<head>
+    <title>Chat Test</title>
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
-  </head>
+</head>
 
-  <body>
+<body>
 
-  <div class="container-fluid">
-    <div class=:"row">
-      <div class="col-xs-4">
-        <div id="message-box"></div>
-      </div>
-      <div class="col-xs-8">
-        <div id="chat-list"></div>
-      </div>
-    </div>
-  </div>
 
+    <nav id="navbar" class="navbar navbar-inverse container-full bg-nav">
+        <h1 class='title text-center'>Test Chat Server!</h1>
+    </nav>
+
+    <section id="chat-list" class="container container-full">
+        <div class="row container-full height-full">
+            <div class="col-xs-12 container-full height-full">
+                <div id="react-chat-list" class="height-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="message-box" class="container container-full">
+        <div class="row container-full">
+            <div class="col-xs-12 container-full">
+                <div id="react-message-box"></div>
+            </div>
+        </div>
+    </section>
 
 
     <!--TEMPLATES-->
@@ -31,5 +39,6 @@
     <script src="//localhost:35729/livereload.js"></script>
     <!--SCRIPTS-->
     <!--SCRIPTS END-->
-  </body>
+</body>
+
 </html>
